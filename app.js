@@ -58,7 +58,7 @@ io.sockets.on('connection', function(socket){
       player.pressingRight = data.state;
     else if (data.inputId === 'up')
       player.pressingUp = data.state;
-    else if (data.inputId === 'down');
+    else if (data.inputId === 'down')
       player.pressingDown = data.state;
   });
 
