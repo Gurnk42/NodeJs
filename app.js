@@ -25,7 +25,6 @@ var Player = function(id) {
     maxSpd:10
   }
   self.updatePosition = function(){
-    console.log(self.pressingDown);
     if (self.pressingDown)
       self.y += self.maxSpd;
     if (self.pressingRight)
@@ -63,6 +62,7 @@ io.sockets.on('connection', function(socket){
   });
 
   socket.on('sendMsgToServer', function(data){
+	data = data.replace(/</g, "&lt;").replace(/>/g, "&gt;");
     var playerName = ("" + socket.id).slice(2, 7);
     for (var i in SOCKET_LIST){
       SOCKET_LIST[i].emit('addToChat', playerName + ': ' + data);
